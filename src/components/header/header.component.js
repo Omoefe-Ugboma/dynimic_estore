@@ -1,8 +1,12 @@
 import React from 'react'
 import {Link } from 'react-router-dom';
-import './header.styles.css';
+import CartIcon from '../cart-icon/cart-icon.component';
+import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 
-const Header = () => (
+import './header.styles.css';
+import { connect } from 'react-redux';
+
+const Header = ({hidden}) => (
     <div className='header'>
        <Link className='logo-container' to="/">
            <div className='logo'>Emarket</div>  
@@ -11,8 +15,13 @@ const Header = () => (
            <Link className='option' to='/shop'>
                AddToCart
            </Link>
-                  
+         <CartIcon/>    
        </div>
+       {hidden ? null : <CartDropdown/>}
     </div>
-)
-export default Header;
+);
+
+const mapStateToProps = ({cart: {hidden}}) =>({
+   hidden
+});
+export default connect(mapStateToProps)(Header);
