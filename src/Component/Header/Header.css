@@ -1,0 +1,12 @@
+ .flexbox-container{
+     display: -ms-flex;
+     display: -webkit-flex;
+     display: flex;
+ }
+
+ a{
+     text-decoration: none;
+ }
+header{
+    border-bottom: 1px solid #e2e2e2;
+}
